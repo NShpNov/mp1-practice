@@ -19,27 +19,27 @@ int smaller(min, k)
 void A()
 {
 	time_t t;
-	int n, a, i = 0;
+	int a, n, i = 0;
 	srand((unsigned)time(&t));
 	n = rand() % 1000;
-	printf("debug: %d\n", n);
 	printf("enter your first guess: ");
 	do {
 		i++;
 		scanf("%d", &a);
-		if (a == n)
+		if ((a == n) && (a>0) && (a<1000))
 		{
 			printf("That's it! Attemts count: %d", i);
 			return 0;
 		}
-		else if (a < n)
+		else if ((a < n) && (a > 0) && (a < 1000))
 		{
 			printf("bigger... ");
 		}
-		else
+		else if ((a > n) && (a > 0) && (a < 1000))
 		{
 			printf("smaller... ");
 		}
+		int a;
 	} while (1);
 }
 void B()
@@ -66,11 +66,13 @@ void B()
 			return 0;
 		}
 		else if (ch == 'b') {
-			min = n;
+			min = n + 1;
+			max--;
 			n = bigger(max, n);
 		}
 		else {
-			max = n;
+			max = n - 1;
+			min++;
 			n = smaller(min, n);
 		}
 	} while (1);
