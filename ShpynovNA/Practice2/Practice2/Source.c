@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-int bigger(max, k) //случайное число от k до max
+int bigger(max, k) //random number between k and max
 {
 	time_t t;
 	int n;
@@ -8,7 +8,7 @@ int bigger(max, k) //случайное число от k до max
 	n = (rand() % (max - k)) + k;
 	return n;
 }
-int smaller(min, k) //случайное число от min до k
+int smaller(min, k) //random number between min and k
 {
 	time_t t;
 	int n;
@@ -16,18 +16,18 @@ int smaller(min, k) //случайное число от min до k
 	n = (rand() % (k - min)) + min;
 	return n;
 }
-void A() //первая игра
+void A() //first game
 {
 	time_t t;
 	int a, n, i = 0;
 	srand((unsigned)time(&t));
 	n = rand() % 1000;
-	printf("debug: %d\n", n); //программа выводит загаданное число для проверки корректости ее работы (на всякий случай)
+	printf("debug: %d\n", n); //checking the machine generated number (just in case)
 	printf("enter your first guess: ");
 	do {
 		i++;
 		scanf("%d", &a);
-		if ((a == n) && (a>0) && (a<1000))
+		if ((a == n) && (a > 0) && (a < 1000))
 		{
 			printf("That's it! Attemts count: %d", i);
 			return 0;
@@ -40,9 +40,9 @@ void A() //первая игра
 		{
 			printf("smaller... ");
 		}
-	} while (1); //именно такая реализация цикла позволят программе не ломаться, если пользователь случайно введет строку
+	} while (1); //this loop makes program not to break if strng is intodused instead of int
 }
-void B() //вторая игра со случайным поиском числа
+void B() //second game with randomly generated guesses
 {
 	time_t t;
 	char ch;
@@ -75,7 +75,7 @@ void B() //вторая игра со случайным поиском числа
 		}
 	} while (1);
 }
-void B1() //вторая игра с оптимизированным поиском числа (не более log2(1000) ходов, то есть <=10)
+void B1() //second game with an optimized algorithm (up to 10 moves (log2(1000)))
 {
 	time_t t;
 	char ch;
@@ -108,14 +108,14 @@ void B1() //вторая игра с оптимизированным поиском числа (не более log2(1000) хо
 		}
 	} while (1);
 }
-int main() //выбор игры пользователем
+int main() //choosing a game
 {
 	char a, b;
 	printf("choose game, A or B: ");
 	do {
 		scanf("%c", &a);
 	} while ((a != 'A') && (a != 'B'));
-	if (a == 'B') 
+	if (a == 'B')
 	{
 		printf("choose your regime: 1 is for random, 2 is for optimized ");
 		do {
