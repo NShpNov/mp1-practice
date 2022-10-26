@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-void A2()
+void A2()													 //computer is guessing (2 digits)
 {
 
 	int a[10] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }, b[2] = { 0 };
@@ -20,12 +20,12 @@ void A2()
 			c = 0;
 			d = 0;
 		}
-	i++;
+		i++;
 	}
 	printf("%d%d %d", b[0], b[1], k);
 	return 0;
 }
-void A3()
+void A3()  													 //3 digits
 {
 	int a[10] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }, b[3] = { 0 };
 	int i = 1, n, k = 0, c, d;
@@ -60,7 +60,7 @@ void A3()
 	printf("%d%d%d %d", b[0], b[1], b[2], k);
 	return 0;
 }
-void A4()
+void A4()													 //4 digits
 {
 	int a[10] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }, b[4] = { 0 };
 	int i = 1, n, k = 0, c, d;
@@ -110,11 +110,11 @@ void A4()
 	printf("%d%d%d%d %d", b[0], b[1], b[2], b[3], k);
 	return 0;
 }
-void A5()
+void A5()													 //5 digits
 {
 	int a[10] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }, b[5] = { 0 };
 	int i = 1, n, k = 0, c, d;
-	while ((b[0] == 0) || (b[1] == 0) || (b[2] == 0) || (b[3] == 0) || (b[4] == 0)){
+	while ((b[0] == 0) || (b[1] == 0) || (b[2] == 0) || (b[3] == 0) || (b[4] == 0)) {
 		k++;
 		printf("%d%d%d%d%d", (a[i]), (a[0]), (a[0]), (a[0]), (a[0]));
 		printf("?\n");
@@ -162,18 +162,18 @@ void A5()
 				}
 			}
 		}
-	i++;
+		i++;
 	}
 	printf("%d%d%d%d%d %d", b[0], b[1], b[2], b[3], b[4], k);
 	return 0;
 }
-void B(n)
+void B(n)													//human is guessing
 {
 	{
 		int a[5] = { 0 }, b[5] = { 0 }, i = 0, ii = 0, k, l, f = 1, n1, n2, bull = 0, cow = 0;
 		time_t t;
 		srand((unsigned)time(&t));
-		for (i = 0; i < n; i++) {
+		for (i = 0; i < n; i++) {							//generating a number with unique digits
 			do {
 				k = (rand() % 9) + 1;
 				if ((a[0] != k) && (a[1] != k) && (a[2] != k) && (a[3] != k) && (a[4] != k)) {
@@ -181,8 +181,8 @@ void B(n)
 				}
 			} while (a[i] == 0);
 		}
-		for (i = 0; i < n; i++) {
-			printf("%d", a[i]);
+		for (i = 0; i < n; i++) {							//printing that number in case there is a mistake
+			printf("debug: %d", a[i]);
 		}
 		for (i = 0; i < n; i++) {
 			f *= 10;
@@ -190,7 +190,7 @@ void B(n)
 		do {
 			printf("\nenter your guess: ");
 
-			do {
+			do {											//player is guessing
 				scanf("%d", &l);
 			} while ((l < f) && (l > 10 * f - 1));
 			for (i = n - 1; i >= 0; i--) {
@@ -198,7 +198,7 @@ void B(n)
 				l /= 10;
 			}
 			ii++;
-			for (n1 = 0; n1 < n; n1++) {
+			for (n1 = 0; n1 < n; n1++) {					//checking if there are any bulls or cows
 				for (n2 = 0; n2 < n; n2++) {
 					if ((n1 == n2) && (a[n1] == b[n2])) {
 						bull++;
@@ -219,7 +219,7 @@ void B(n)
 		} while (1);
 	}
 }
-int main()
+int main()													//player is choosing a game mode
 {
 	int n, i;
 	printf("chhose a game, 1 or 2: ");
