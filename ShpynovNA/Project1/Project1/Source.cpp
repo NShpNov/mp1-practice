@@ -5,7 +5,7 @@
 #include <Windows.h>
 #define w 20
 #define h 20
-#define m 1
+#define m 30
 int k = 0;
 char c[18] = { ' ', 'm', 'i', 'n', 'e', '(', 's',')', ' ', 'r', 'e', 'm', 'a', 'i', 'n', 'i', 'n', 'g'};
 char b[60] = { 'a', 'n', 'd', ' ', 't', 'h', 'e', ' ', 'g', 'a', 'm', 'e', ' ', 'h', 'a', 's', 'n', '\'', 't', ' ', 'e', 'n', 'd', 'e', 'd', '.', ' ', 'A', 'r', 'e', ' ', 'y', 'o', 'u', ' ', 's', 'u', 'r', 'e', ',', ' ', 'y', 'o', 'u', ' ', 'd', 'o', 'i', 'n', 'g', ' ', 'a', 'l','r','i','g','h', 't', '?'};
@@ -72,6 +72,10 @@ void reveal(int i, int j)
 			reveal(i, j - 1);
 			reveal(i + 1, j);
 			reveal(i, j + 1);
+			reveal(i + 1, j + 1);
+			reveal(i - 1, j - 1);
+			reveal(i + 1, j - 1);
+			reveal(i - 1, j + 1);
 		}
 	}
 }
