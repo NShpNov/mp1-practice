@@ -170,7 +170,7 @@ void A5()													 //5 digits
 void B(n)													//human is guessing
 {
 	{
-		int a[5] = { 0 }, b[5] = { 0 }, i = 0, ii = 0, k, l, f = 1, n1, n2, bull = 0, cow = 0;
+		int a[5] = { 0 }, b[5] = { 0 }, i = 0, ii = 0, k, l, f = 1, n1, n2, bull = 0, cow = 0, tmp = 0;
 		time_t t;
 		srand((unsigned)time(&t));
 		for (i = 0; i < n; i++) {							//generating a number with unique digits
@@ -182,7 +182,7 @@ void B(n)													//human is guessing
 			} while (a[i] == 0);
 		}
 		for (i = 0; i < n; i++) {							//printing that number in case there is a mistake
-			printf("debug: %d", a[i]);
+			printf("%d", a[i]);
 		}
 		for (i = 0; i < n; i++) {
 			f *= 10;
@@ -192,11 +192,20 @@ void B(n)													//human is guessing
 
 			do {											//player is guessing
 				scanf("%d", &l);
-			} while ((l < f) && (l > 10 * f - 1));
-			for (i = n - 1; i >= 0; i--) {
-				b[i] = l % 10;
-				l /= 10;
-			}
+				for (i = n - 1; i >= 0; i--) {
+					b[i] = l % 10;
+					l /= 10;
+				}
+				tmp = 0;
+				for (i = 0; i < n; i++) {
+					for (int kk = i + 1; kk < n; kk++) {
+						if ((b[i] == b[kk]) || (b[kk] == 0)){
+							tmp = 1;
+							break;
+						}
+					}
+				}
+			} while (tmp == 1);
 			ii++;
 			for (n1 = 0; n1 < n; n1++) {					//checking if there are any bulls or cows
 				for (n2 = 0; n2 < n; n2++) {
