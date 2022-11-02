@@ -205,6 +205,9 @@ void B(n)													//human is guessing
 						}
 					}
 				}
+				if (tmp == 1) {
+					printf("you've entered a wrong number");
+				}
 			} while (tmp == 1);
 			ii++;
 			for (n1 = 0; n1 < n; n1++) {					//checking if there are any bulls or cows
