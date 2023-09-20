@@ -11,16 +11,21 @@ private:
 public:
 	vect();
 	vect(int a, int b, int c);
-	vect& operator+ (const vect& v);
-	vect& operator-(const vect& v);
-	double operator*(const vect& v);
+	vect operator+(const vect& v);
+	vect operator-(const vect& v);
+	vect operator=(const vect& v);
+	double operator*(const vect& v) const;
+	friend istream& operator>>(istream& in,vect& l) {
+		in >> l.x >> l.y >> l.z;
+		return in;
+	}
 	friend ostream& operator<<(ostream& out, const vect& l) {
 			out <<"(" << l.x << ", " << l.y << ", " << l.z <<")";
 		return out;
 	}
 
-	double length();
-	double cosine(vect& v);
+	double length() const;
+	double cosine(vect& v) const;
 };
 
 class lib {

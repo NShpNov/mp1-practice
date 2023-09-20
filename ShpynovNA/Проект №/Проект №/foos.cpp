@@ -9,27 +9,35 @@ vect::vect(int a, int b, int c) {
 	z = c;
 }
 
-vect& vect::operator+(const vect& v){
+vect vect::operator+(const vect& v){
 	vect tmp;
 	tmp.x = x + v.x;
 	tmp.y = y + v.y;
 	tmp.z = z + v.z;
 	return tmp;
 }
-vect& vect::operator-(const vect& v) {
+vect vect::operator-(const vect& v) {
 	vect tmp;
 	tmp.x = x - v.x;
 	tmp.y = y - v.y;
 	tmp.z = z - v.z;
 	return tmp;
 }
-double vect::length() {
+vect vect::operator=(const vect& v) {
+	if ((x != v.x) && (y != v.y) && (z != v.z)) {
+		x = v.x;
+		y = v.y;
+		z = v.z;
+	}
+	return *this;
+}
+double vect::length() const {
 	return sqrt((x * x + y * y + z * z));
 }
-double vect::operator*(const vect& v) {
+double vect::operator*(const vect& v) const {
 	return(x * v.x + y * v.y + z * v.z);
 }
-double vect::cosine(vect& v) {
+double vect::cosine(vect& v) const {
 	double tmp = length() * v.length();
 	return ((x * v.x + y * v.y + z * v.z) / (length() * v.length()));
 }
@@ -40,9 +48,7 @@ lib::lib(int a) {
 	vectors = new vect[a];
 	for (int i = 0; i < a; i++) {
 		cout << "enter " << i << " vector: ";
-		int x, y, z;
-		cin >> x >> y >> z;
-		vectors[i] = vect(x, y, z);
+		cin >> vectors[i];
 	}
 }
 lib::~lib() {

@@ -19,7 +19,7 @@ int main() {
 			cout << "choose vector: ";
 			cin >> num;
 			if (num < n) {
-				cout << libary[num] << "'s length" << libary[num].length() << endl;
+				cout << libary[num] << "'s length: " << libary[num].length() << endl;
 			}
 			else cout << "not found";
 			break;
