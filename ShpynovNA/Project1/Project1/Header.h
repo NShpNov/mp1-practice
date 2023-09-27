@@ -53,11 +53,11 @@ public:
 	student();
 	student(const string& v);
 	const student& operator= (const student& e);
-	bool check_data(names n);
-	bool check_data(date n);
-	bool check_data(string n);
+	bool operator==(const names n) const;
+	bool operator==(const date n) const;
+	bool operator==(const string n) const;
 	friend ostream& operator<<(ostream& out, const student& l) {
-		out << l.name << ", " << l.birth << "; " << l.number << endl;
+		out << l.name << ", " << l.birth << "; " << l.number;
 		return out;
 	}
 };
@@ -71,19 +71,7 @@ public:
 	lib(int a);
 	lib(const string& filename);
 	~lib();
-	template <typename T> student find_stud(T n) {
-		student tmp;
-		bool flag = true;
-		for (int i = 0; i < amount; i++) {
-			if (elems[i].check_data(n)) {
-				tmp = elems[i];
-				flag = false;
-				break;
-			}
-		}
-		if (flag) throw "no such student found";
-		return tmp;
-	};
+	template <typename T> student find_stud(const T n);
 	student& operator[](int ind);
 	friend ostream& operator<<(ostream& out, const lib& l) {
 		for (int i = 0; i < l.amount; i++) {
@@ -94,6 +82,19 @@ public:
 	}
 };
 
-string* divider(int n, string s, string del);
+string* divider(int n, const string s, const string del);
 string get_string(ifstream& file);
+template <typename T> student lib::find_stud(const T n) {
+	student tmp;
+	bool flag = true;
+	for (int i = 0; i < amount; i++) {
+		if (elems[i] == n) {
+			tmp = elems[i];
+			flag = false;
+			break;
+		}
+	}
+	if (flag) throw "no such student found";
+	return tmp;
+}
 #endif // !HEADER_H

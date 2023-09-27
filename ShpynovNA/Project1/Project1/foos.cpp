@@ -8,7 +8,7 @@ string get_string(ifstream& file) {
 	getline(file, tmp);
 	return tmp;
 }
-string* divider(int n, string s, string del) {
+string* divider(int n, const string s, const string del) {
 	string* Stmp = new string[n];
 	string delim = del;
 	size_t last = 0;
@@ -62,15 +62,15 @@ student::student(const string& str) {
 	delete[]stmp;
 	delete[]stmp1;
 }
-bool student::check_data(names n) {
+bool student::operator==(const names n) const  {
 	if (name == n) return true;
 	else return false;
 }
-bool student::check_data(date n) {
+bool student::operator==(const date n) const  {
 	if (birth == n) return true;
 	else return false;
 }
-bool student::check_data(string n) {
+bool student::operator==(const string n) const  {
 	if (number == n) return true;
 	else return false;
 }

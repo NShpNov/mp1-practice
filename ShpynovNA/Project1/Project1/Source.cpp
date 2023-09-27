@@ -7,7 +7,7 @@ int main() {
 	string filename;
 	cin >> filename;
 	lib studs(filename);
-	cout << "all students:" << endl << studs << endl;
+	cout << "all students:"<< studs << endl;
 	while (1) {
 		char a;
 		cout << "how to find?" << endl;
